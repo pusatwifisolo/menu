@@ -99,19 +99,6 @@
             animation: gradientShift 4s ease-in-out infinite;
         }
         
-.title {
-  font-size: 3em;
-  text-align: center;
-  color: #fff;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6); /* Tambahkan bayangan */
-}
-
-.gradient-text {
-  background: linear-gradient(45deg, #ff6b6b, #f0e130, #4ecdc4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow juga untuk teks gradient */
-}
 
 
 h1::before,
@@ -777,11 +764,8 @@ h1::after {
     <!-- Toast notification -->
     <div class="toast" id="toast"></div>
 
-<div class="container">
-  <h1 class="title" onclick="titleAnimation()">
-    🍽️ <span class="gradient-text">Masakan 31 Hari</span> 🍽️
-  </h1>
-</div>
+<div class="container">  
+        <h1 onclick="titleAnimation()">🍱 <span class="gradient-text">Masakan 31 Hari</span> 🍱</h1>  
         
         <div class="table-wrapper">
             <table id="menuTable">

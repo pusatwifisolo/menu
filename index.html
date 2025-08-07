@@ -99,6 +99,28 @@
             animation: gradientShift 4s ease-in-out infinite;
         }
         
+.title {
+  font-size: 3em;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Shadow untuk kontras */
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.title:hover {
+  transform: scale(1.05); /* Zoom ringan saat hover */
+  text-shadow: 0 0 15px #ffd700, 0 0 30px #ff8c00; /* Glow saat hover */
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ff6b6b, #f0e130, #4ecdc4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4); /* Tambahan shadow ringan */
+}
+
+
 h1::before,
 h1::after {
     content: '✨';
@@ -763,7 +785,10 @@ h1::after {
     <div class="toast" id="toast"></div>
 
     <div class="container">
-        <h1 onclick="titleAnimation()">🍽️ <span class="gradient-text">Masakan 31 Hari</span> 🍽️</h1>
+  <h1 class="title" onclick="titleAnimation()">
+    🍽️ <span class="gradient-text">Masakan 31 Hari</span> 🍽️
+  </h1>
+</div>
         
         <div class="table-wrapper">
             <table id="menuTable">

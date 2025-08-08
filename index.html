@@ -180,7 +180,7 @@
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
         }
         .btn-refresh {
-            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            background: linear-gradient(45deg, #2196F3, #4CAF50); /* Updated gradient */
         }
         .floating-sub-btn:hover {
             transform: scale(1.1) rotate(360deg);
@@ -385,6 +385,9 @@
             font-weight: bold;
             position: relative;
             overflow: hidden;
+        }
+        .total-row td {
+            padding: 9px 6px;
         }
         .total-row td:last-child {
             text-align: right !important;
@@ -693,6 +696,10 @@
             width: 90%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             animation: modalPop 0.3s ease-out;
+            text-align: left;
+        }
+        .modal-content button {
+            float: right;
         }
         @keyframes modalPop {
             from {
@@ -1248,12 +1255,13 @@
             const modal = document.getElementById('modal');
             const modalTitle = document.getElementById('modal-title');
             const modalDescription = document.getElementById('modal-description');
-            modalTitle.textContent = `Hari ${day}: ${menu.split('\n')[0]}`;
+            modalTitle.textContent = `Hari ${day} : ${menu.split('\n')[0]}`;
+            const formatText = (text) => text.replace(/\n/g, ' ').trim().replace(/\s+/g, ' ');
             modalDescription.innerHTML = `
-                <p><strong>Menu Utama:</strong> ${menu.replace(/\n/g, '<br>')}</p>
-                <p><strong>Tempe:</strong> ${tempe || '-'}</p>
-                <p><strong>Telur:</strong> ${telur || '-'}</p>
-                <p><strong>Harga:</strong> ${price}</p>
+                <p><strong>Menu Utama :</strong> ${formatText(menu)}</p>
+                <p><strong>Tempe :</strong> ${tempe ? formatText(tempe) : '-'}</p>
+                <p><strong>Telur :</strong> ${telur || '-'}</p>
+                <p><strong>Harga :</strong> ${price}</p>
             `;
             modal.style.display = 'flex';
         }

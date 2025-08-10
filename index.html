@@ -1374,7 +1374,14 @@
             const modal = document.getElementById('modal');
             const modalTitle = document.getElementById('modal-title');
             const modalDescription = document.getElementById('modal-description');
-            modalTitle.textContent = `Hari ${day}: ${menu.split('\n')[0]}`;
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            const now = new Date();
+            const date = new Date(now.getFullYear(), now.getMonth(), parseInt(day));
+            const dayName = days[date.getDay()];
+            const monthName = months[date.getMonth()];
+            const year = date.getFullYear();
+            modalTitle.textContent = `${dayName}, ${day} ${monthName} ${year}`;
             const formatText = (text) => text.replace(/\n/g, ' ').trim().replace(/\s+/g, ' ');
             modalDescription.innerHTML = `
                 <div class="aligned-row">
@@ -1498,4 +1505,3 @@
     </script>
 </body>
 </html>
-```

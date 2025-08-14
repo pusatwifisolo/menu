@@ -442,26 +442,38 @@
             font-weight: bold;
             position: relative;
             overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .total-row:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
         .total-row td {
-            padding: 9px 6px;
+            background: linear-gradient(135deg, #FF6B6B, #4ECDC4);
+            font-weight: bold;
+            text-align: center;
+            font-size: 12px;
+            transition: all 0.3s ease;
         }
-        .total-row td:last-child {
-            text-align: right !important;
+        .total-row .price-col {
+            background: linear-gradient(135deg, #C8E6C9, #DCEDC8);
+            text-align: right;
+            color: black;
         }
-        .total-row::before {
+        .total-row td::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: celebration 2s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s infinite;
         }
-        @keyframes celebration {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        @media (min-width: 768px) {
+            .total-row td {
+                font-size: 14px;
+            }
         }
         .summary {
             background: linear-gradient(135deg, #E3F2FD, #F3E5F5);
@@ -513,7 +525,7 @@
                 transform: translateX(0);
             }
         }
-        tr:nth-child(even) td:not(.day-col):not(.total-row) {
+        tr:nth-child(even) td:not(.day-col) {
             filter: brightness(0.98);
         }
         .currency {
@@ -624,13 +636,6 @@
         }
         .tepung-table tbody tr:nth-child(even) {
             background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-        }
-        .price-table td {
-            padding: 10px 8px;
-            border: 1px solid #dee2e6;
-            font-size: 12px;
-            transition: all 0.3s ease;
-            position: relative;
         }
         .price-table tbody tr:hover td {
             background: linear-gradient(135deg, #fff9e6, #ffe0b3) !important;
@@ -933,223 +938,223 @@
                     <tr>
                         <td class="day-col">1</td>
                         <td class="menu-col">Ayam Kecap Rica <br>Bumbu Rica</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 28.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">2</td>
                         <td class="menu-col">Ayam Kecap Rica (Ke-2)</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 8.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">3</td>
                         <td class="menu-col">Orak Arik <br>Telur</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 4</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">4</td>
-                        <td class="menu-col">Sawi Santan <br>Kelapa <br>Gula Jawa</td>
+                        <td class="menu-col">Sayur Asem</td>
                         <td class="tempe-col">Tempe </td>
                         <td class="telur-col">-</td>
-                        <td class="price-col"><span class="currency">Rp</span> 18.000</td>
+                        <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">5</td>
-                        <td class="menu-col">Sayur Asem</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="menu-col">Oseng Kacang <br>Wortel </td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">6</td>
-                        <td class="menu-col">Gori <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Gori <br>Santan </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">7</td>
                         <td class="menu-col">Soto Dada Ayam (1/3)</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 23.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">8</td>
-                        <td class="menu-col">Lodeh <br>Terong <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Kentang Santan <br>Tahu dan Cecek</td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
-                        <td class="price-col"><span class="currency">Rp</span> 15.000</td>
+                        <td class="price-col"><span class="currency">Rp</span> 22.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">9</td>
-                        <td class="menu-col">Soto Dada Ayam (2/3)</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="menu-col">Orak Arik <br>Telur</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
-                        <td class="price-col"><span class="currency">Rp</span> 13.000</td>
+                        <td class="price-col"><span class="currency">Rp</span> 12.300</td>
                     </tr>
                     <tr>
                         <td class="day-col">10</td>
-                        <td class="menu-col">Sawi Santan <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Sawi <br>Santan  </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 18.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">11</td>
-                        <td class="menu-col">Soto Dada Ayam (3/3)</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="menu-col">Soto Dada Ayam (2/3)</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 13.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">12</td>
-                        <td class="menu-col">Beli Matengan <br>Hik</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Beli Matengan <br>Hik Malam</td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 23.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">13</td>
                         <td class="menu-col">Orak Arik <br>Telur</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 4</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">14</td>
                         <td class="menu-col">Sayur Bayam</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 16.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">15</td>
-                        <td class="menu-col">Sop</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="menu-col">Soto Dada Ayam (3/3)</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
-                        <td class="price-col"><span class="currency">Rp</span> 15.000</td>
+                        <td class="price-col"><span class="currency">Rp</span> 13.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">16</td>
-                        <td class="menu-col">Gori <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Gori <br>Santan  </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">17</td>
                         <td class="menu-col">Katsu <br>Panir (1/3)</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 21.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">18</td>
-                        <td class="menu-col">Lodeh <br>Terong <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Lodeh Terong <br>Santan  </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">19</td>
                         <td class="menu-col">Katsu <br>Panir (2/3)</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">20</td>
-                        <td class="menu-col">Sawi Santan <br>Kelapa <br>Gula Jawa</td>
+                        <td class="menu-col">Sop</td>
                         <td class="tempe-col">Tempe </td>
                         <td class="telur-col">-</td>
-                        <td class="price-col"><span class="currency">Rp</span> 18.000</td>
-                    </tr>
+                        <td class="price-col"><span class="currency">Rp</span> 15.000</td>
+                    </tr>					
                     <tr>
                         <td class="day-col">21</td>
                         <td class="menu-col">Katsu <br>Panir (3/3)</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 16.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">22</td>
                         <td class="menu-col">Sayur Bayam</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 16.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">23</td>
                         <td class="menu-col">Sawi Oseng <br>Wortel</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 16.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">24</td>
-                        <td class="menu-col">Lodeh <br>Terong <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Lodeh <br>Terong <br>Santan  </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">25</td>
                         <td class="menu-col">Ayam Kecap Rica <br>Bumbu Rica</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 28.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">26</td>
                         <td class="menu-col">Ayam Kecap Rica (Ke-2)</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 8.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">27</td>
                         <td class="menu-col">Orak Arik <br>Telur</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 4</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">28</td>
-                        <td class="menu-col">Beli Matengan <br>Hik</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Beli Matengan <br>Hik Malam</td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 23.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">29</td>
                         <td class="menu-col">Sayur Asem</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
                         <td class="price-col"><span class="currency">Rp</span> 15.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">30</td>
-                        <td class="menu-col">Sawi Santan <br>Kelapa <br>Gula Jawa</td>
-                        <td class="tempe-col">Tempe </td>
+                        <td class="menu-col">Sawi Santan <br>Santan  </td>
+                        <td class="tempe-col">Tempe</td>
                         <td class="telur-col">-</td>
                         <td class="price-col"><span class="currency">Rp</span> 18.000</td>
                     </tr>
                     <tr>
                         <td class="day-col">31</td>
-                        <td class="menu-col">Sop</td>
-                        <td class="tempe-col">Tempe <br>Tepung</td>
+                        <td class="menu-col">Sawi Santan <br>Santan  </td>
+                        <td class="tempe-col">Tempe <br>Tepung </td>
                         <td class="telur-col">Telur 2</td>
-                        <td class="price-col"><span class="currency">Rp</span> 15.000</td>
+                        <td class="price-col"><span class="currency">Rp</span> 18.000</td>
                     </tr>
                     <tr class="total-row">
-                        <td colspan="3" style="text-align: center; vertical-align: middle; font-size: 13px;"><strong>🎯 TOTAL ANGGARAN 31 HARI 🎯</strong></td>
-                        <td class="price-col" style="text-align: right; vertical-align: middle; font-size: 12px;"><strong><span class="currency">Rp</span></strong> <span style="color: black;">508.000</span></td>
+                        <td colspan="4"><span id="total-budget-text">🎯 TOTAL ANGGARAN - <span id="dynamic-month-year"></span> 🎯</span></td>
+                        <td class="price-col"><span class="currency">Rp</span> 520.000</td>
                     </tr>
                 </tbody>
             </table>
@@ -1172,12 +1177,14 @@
                             <tr><td>Sayur Asem</td><td style="text-align: right;"><span class="currency">Rp</span> 4.000</td><td style="text-align: center;">1 hari</td></tr>
                             <tr><td>Sop</td><td style="text-align: right;"><span class="currency">Rp</span> 4.000</td><td style="text-align: center;">1 hari</td></tr>
                             <tr><td>Oseng Kacang + Wortel</td><td style="text-align: right;"><span class="currency">Rp</span> 5.000</td><td style="text-align: center;">1 hari</td></tr>
+                            <tr><td>Oseng Kacang + Wortel + Gula Jawa</td><td style="text-align: right;"><span class="currency">Rp</span> 7.000</td><td style="text-align: center;">1 hari</td></tr>
                             <tr><td>Sawi Oseng + Wortel</td><td style="text-align: right;"><span class="currency">Rp</span> 7.000</td><td style="text-align: center;">1 hari</td></tr>
-                            <tr><td>Lodeh + Terong + Kelapa</td><td style="text-align: right;"><span class="currency">Rp</span> 8.000</td><td style="text-align: center;">1 hari</td></tr>
+                            <tr><td>Lodeh + Terong + Santan</td><td style="text-align: right;"><span class="currency">Rp</span> 8.000</td><td style="text-align: center;">1 hari</td></tr>
                             <tr><td>Sayur Bayam</td><td style="text-align: right;"><span class="currency">Rp</span> 8.000</td><td style="text-align: center;">1 hari</td></tr>
-                            <tr><td>Gori + Kelapa</td><td style="text-align: right;"><span class="currency">Rp</span> 9.000</td><td style="text-align: center;">1 hari</td></tr>
-                            <tr><td>Sawi Santan + Kelapa</td><td style="text-align: right;"><span class="currency">Rp</span> 11.000</td><td style="text-align: center;">1 hari</td></tr>
-                            <tr><td>Beli Matengan + Hik</td><td style="text-align: right;"><span class="currency">Rp</span> 16.000</td><td style="text-align: center;">1 hari</td></tr>
+                            <tr><td>Gori + Santan</td><td style="text-align: right;"><span class="currency">Rp</span> 9.000</td><td style="text-align: center;">1 hari</td></tr>
+                            <tr><td>Sawi Santan + Santan</td><td style="text-align: right;"><span class="currency">Rp</span> 11.000</td><td style="text-align: center;">1 hari</td></tr>
+                            <tr><td>Kentang + Santan + Tahu</td><td style="text-align: right;"><span class="currency">Rp</span> 15.000</td><td style="text-align: center;">1 hari</td></tr>
+                            <tr><td>Beli Matengan + Hik Malam</td><td style="text-align: right;"><span class="currency">Rp</span> 16.000</td><td style="text-align: center;">1 hari</td></tr>
                             <tr><td>Ayam Kecap Rica + Bumbu Rica</td><td style="text-align: right;"><span class="currency">Rp</span> 23.000</td><td style="text-align: center;">2 hari</td></tr>
                             <tr><td>Soto Dada Ayam</td><td style="text-align: right;"><span class="currency">Rp</span> 28.000</td><td style="text-align: center;">3 hari</td></tr>
                             <tr><td>Katsu + Panir</td><td style="text-align: right;"><span class="currency">Rp</span> 31.000</td><td style="text-align: center;">3 hari</td></tr>
@@ -1245,15 +1252,19 @@
             <p><strong>🟤 Total Tempe:</strong> 31 hari (15.5 bungkus) → <span class="currency">Rp</span> 108.500</p>
             <p><strong>🌾 Total Tepung:</strong> 10 hari (5 bungkus) → <span class="currency">Rp</span> 15.000</p>
             <p><strong>🧄 Total Bawang & Bumbu:</strong> → <span class="currency">Rp</span> 78.000</p>
-            <p><strong>🍲 Total Menu Utama:</strong> → <span class="currency">Rp</span> 266.500</p>
+            <p><strong>🍲 Total Menu Utama:</strong> → <span class="currency">Rp</span> 259.200</p>
             <hr style="margin: 15px 0; border: 2px solid #4ECDC4;">
             <h3 style="margin-top: 20px; animation: bounce 2s infinite 0.5s;">📅 Distribusi Menu Sesuai Aturan:</h3>
-            <p><strong>🍲 Soto:</strong> Tanggal 7, 11, 13 (tersebar di tanggal 1-15)</p>
+            <p><strong>🍲 Soto:</strong> Tanggal 7, 11, 15 (tersebar di tanggal 1-15)</p>
             <p><strong>🍗 Katsu:</strong> Tanggal 17, 19, 21 (tanggal ganjil di periode 16-31)</p>
             <p><strong>🥘 Ayam Kecap Rica:</strong> Tanggal 1-2 dan 25-26 (4 hari bergandengan)</p>
-            <p><strong>🥥 Menu Santan:</strong> Tanggal 4, 10, 20, 30 (tanggal genap)</p>
-            <p><strong>🌾 Tepung Tempe:</strong> Tanggal 1, 3, 5, 9, 11, 13, 15, 17, 19, 21, 23, 27, 29, 31 (tanggal ganjil)</p>
+            <p><strong>🥥 Menu Santan:</strong> Tanggal 10, 20, 30 (tanggal genap)</p>
+            <p><strong>🌾 Tepung Tempe:</strong> Tanggal 1, 3, 4, 5, 9, 11, 13, 15, 17, 19, 21, 23, 27, 29, 31 (tanggal ganjil + day 4)</p>
             <p><strong>🥬 Sayur Bayam:</strong> Tanggal 14, 22 (menu baru 2x dalam sebulan)</p>
+            <p><strong>🥕 Oseng Kacang + Wortel + Gula Jawa:</strong> Tanggal 4</p>
+            <p><strong>🥔 Kentang + Santan + Tahu:</strong> Tanggal 8</p>
+            <p><strong>🥚 Orak Arik:</strong> Tanggal 3, 9, 13, 27</p>
+            <p><strong>🍜 Sop:</strong> Tanggal 20</p>
         </div>
     </div>
     <script>
@@ -1328,7 +1339,7 @@
         }
         function filterTable() {
             const input = document.getElementById('searchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('#menuTable tbody tr:not(.total-row)');
+            const rows = document.querySelectorAll('#menuTable tbody tr');
             rows.forEach(row => {
                 const day = row.cells[0].textContent.toLowerCase();
                 const menu = row.cells[1].textContent.toLowerCase();
@@ -1406,12 +1417,22 @@
                     showModal(day, menu, tempe, telur, price);
                 });
             });
+        }
+        function updateTotalRowDate() {
+            const months = ['JANUARI', 'FEBRUARI', 'MARET', 'APRIL', 'MEI', 'JUNI', 'JULI', 'AGUSTUS', 'SEPTEMBER', 'OKTOBER', 'NOVEMBER', 'DESEMBER'];
+            const now = new Date();
+            const monthName = months[now.getMonth()];
+            const year = now.getFullYear();
+            const totalBudgetText = document.getElementById('dynamic-month-year');
+            totalBudgetText.textContent = `${monthName} ${year}`;
+            return { monthName, year }; // Return for use in toast
+        }
+        function addTotalRowInteraction() {
             const totalRow = document.querySelector('.total-row');
-            if (totalRow) {
-                totalRow.addEventListener('click', function() {
-                    showToast('💰 Total Budget 31 Hari: Rp 508.000');
-                });
-            }
+            totalRow.addEventListener('click', function() {
+                const { monthName, year } = updateTotalRowDate();
+                showToast(`🎯 Total Anggaran ${monthName} ${year}: Rp 520.000`);
+            });
         }
         function addPriceTableInteractions() {
             const priceTables = document.querySelectorAll('.price-table tbody tr');
@@ -1482,6 +1503,8 @@
             addKeyboardShortcuts();
             addSectionHeaderInteractions();
             enableSmoothScroll();
+            addTotalRowInteraction();
+            updateTotalRowDate();
         });
     </script>
 </body>

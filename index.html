@@ -416,17 +416,21 @@
         /* Responsive */
         @media (max-width: 768px) {
             .app-container {
-                margin: 5px; /* Kurangi margin untuk memaksimalkan ruang */
+                margin: 0; /* Hilangkan margin untuk memaksimalkan lebar */
                 border-radius: 8px; /* Kurangi radius untuk tampilan lebih ringkas */
             }
             
+            .content {
+                padding: 0.5rem; /* Kurangi padding untuk lebih banyak ruang konten */
+            }
+            
             .calendar-grid {
-                gap: 0.2rem; /* Kurangi gap antar kartu */
+                gap: 0.1rem; /* Kurangi gap antar kartu */
                 justify-content: space-between;
             }
             
             .day-card {
-                width: calc(50% - 0.2rem); /* Lebar kartu lebih pas dengan layar */
+                width: calc(50% - 0.1rem); /* Lebar kartu lebih penuh */
                 min-height: 220px; /* Kurangi tinggi minimum untuk fleksibilitas */
                 padding: 0.8rem; /* Kurangi padding */
                 flex: 1 1 auto;
@@ -434,12 +438,12 @@
             }
             
             .day-card:nth-child(odd) {
-                margin-right: 0.1rem; /* Margin kecil untuk pemisahan */
+                margin-right: 0.05rem; /* Margin sangat kecil untuk pemisahan */
                 margin-left: 0;
             }
             
             .day-card:nth-child(even) {
-                margin-left: 0.1rem; /* Margin kecil untuk pemisahan */
+                margin-left: 0.05rem; /* Margin sangat kecil untuk pemisahan */
                 margin-right: 0;
             }
             
@@ -457,17 +461,18 @@
             }
             
             .menu-details {
-                font-size: 0.7rem; /* Kurangi ukuran font detail */
+                font-size: 0.65rem; /* Kurangi ukuran font detail */
             }
             
             .menu-detail-label {
-                flex: 0 0 60px; /* Kurangi lebar label untuk ruang lebih */
+                flex: 0 0 50px; /* Kurangi lebar label untuk ruang lebih bagi value */
             }
             
             .menu-detail-value {
-                white-space: nowrap; /* Pastikan teks tidak wrap */
-                overflow: hidden;
-                text-overflow: ellipsis; /* Tambahkan ellipsis jika teks terlalu panjang */
+                white-space: normal; /* Izinkan teks membungkus */
+                word-wrap: break-word; /* Pastikan teks panjang membungkus */
+                overflow: visible; /* Hilangkan overflow hidden */
+                text-align: right;
             }
             
             .price-tag {

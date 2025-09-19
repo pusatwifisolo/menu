@@ -1,49 +1,50 @@
 <script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
+    var gk_isXlsx = false;
+    var gk_xlsxFileLookup = {};
+    var gk_fileData = {};
+    function filledCell(cell) {
+      return cell !== '' && cell != null;
+    }
+    function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+        try {
+            var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+            var firstSheetName = workbook.SheetNames[0];
+            var worksheet = workbook.Sheets[firstSheetName];
 
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
+            // Convert sheet to JSON to filter blank rows
+            var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+            // Filter out blank rows (rows where all cells are empty, null, or undefined)
+            var filteredData = jsonData.filter(row => row.some(filledCell));
 
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
+            // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+            var headerRowIndex = filteredData.findIndex((row, index) =>
+              row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+            );
+            // Fallback
+            if (headerRowIndex === -1 || headerRowIndex > 25) {
+              headerRowIndex = 0;
             }
+
+            // Convert filtered JSON back to CSV
+            var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+            csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+            return csv;
+        } catch (e) {
+            console.error(e);
+            return "";
         }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+    }
+    return gk_fileData[filename] || "";
+    }
+</script>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu 31 Hari</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iIzFhYmM5YyIvPjxwYXRoIGQ9Ik0xMiAxMHYxMm04LTEydjEyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iIzFhYmM5YyIvPjxwYXRoIGQ9Ik0xMiAxMHYxMm008LTEydjEyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -415,64 +416,93 @@
         /* Responsive */
         @media (max-width: 768px) {
             .app-container {
-                margin: 10px;
-                border-radius: 12px;
+                margin: 5px; /* Kurangi margin untuk memaksimalkan ruang */
+                border-radius: 8px; /* Kurangi radius untuk tampilan lebih ringkas */
             }
             
             .calendar-grid {
-                gap: 0.4rem;
+                gap: 0.2rem; /* Kurangi gap antar kartu */
                 justify-content: space-between;
             }
             
             .day-card {
-                width: calc(52% - 0.3rem);
-                min-height: 245px;
-                padding: 0.9rem;
+                width: calc(50% - 0.2rem); /* Lebar kartu lebih pas dengan layar */
+                min-height: 220px; /* Kurangi tinggi minimum untuk fleksibilitas */
+                padding: 0.8rem; /* Kurangi padding */
                 flex: 1 1 auto;
+                margin: 0; /* Hilangkan margin negatif */
             }
             
             .day-card:nth-child(odd) {
-                margin-right: auto;
-                margin-left: -2%;
+                margin-right: 0.1rem; /* Margin kecil untuk pemisahan */
+                margin-left: 0;
             }
             
             .day-card:nth-child(even) {
-                margin-left: auto;
-                margin-right: -2%;
+                margin-left: 0.1rem; /* Margin kecil untuk pemisahan */
+                margin-right: 0;
             }
             
             .app-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem; /* Kurangi ukuran font judul */
             }
             
             .menu-text {
-                font-size: 0.85rem;
+                font-size: 0.8rem; /* Kurangi ukuran font */
             }
             
             .menu-text .subtext {
-                font-size: 0.75rem;
-                margin-top: 0.15rem;
+                font-size: 0.7rem; /* Kurangi ukuran font subtext */
+                margin-top: 0.1rem;
             }
             
             .menu-details {
-                font-size: 0.75rem;
+                font-size: 0.7rem; /* Kurangi ukuran font detail */
             }
             
             .menu-detail-label {
-                flex: 0 0 70px;
+                flex: 0 0 60px; /* Kurangi lebar label untuk ruang lebih */
+            }
+            
+            .menu-detail-value {
+                white-space: nowrap; /* Pastikan teks tidak wrap */
+                overflow: hidden;
+                text-overflow: ellipsis; /* Tambahkan ellipsis jika teks terlalu panjang */
             }
             
             .price-tag {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.7rem;
-                min-width: 50px;
-                max-width: 90%;
+                padding: 0.2rem 0.4rem; /* Kurangi padding untuk harga */
+                font-size: 0.65rem; /* Kurangi ukuran font harga */
+                min-width: 40px; /* Kurangi lebar minimum */
+                max-width: 100%; /* Pastikan tidak melebihi lebar parent */
                 box-sizing: border-box;
+                display: inline-block;
+                text-align: center;
             }
             
             .btn {
-                padding: 0.5rem;
-                font-size: 0.75rem;
+                padding: 0.4rem; /* Kurangi padding tombol */
+                font-size: 0.7rem; /* Kurangi ukuran font tombol */
+            }
+            
+            .modal-content {
+                width: 95%; /* Modal lebih penuh dengan layar */
+                max-width: 320px; /* Batasi lebar maksimum */
+                padding: 1rem; /* Kurangi padding modal */
+            }
+            
+            .modal-header {
+                font-size: 1.2rem; /* Kurangi ukuran font header modal */
+            }
+            
+            .modal-form input {
+                font-size: 0.75rem; /* Kurangi ukuran font input */
+                padding: 0.5rem; /* Kurangi padding input */
+            }
+            
+            .modal-btn {
+                font-size: 0.75rem; /* Kurangi ukuran font tombol modal */
+                padding: 0.5rem; /* Kurangi padding tombol modal */
             }
         }
 

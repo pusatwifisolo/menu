@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu 31 Hari</title>
+    <title>Menu</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxMCIgZmlsbD0iIzFhYmM5YyIvPjxwYXRoIGQ9Ik0xMiAxMHYxMm008LTEydjEyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -267,6 +267,11 @@
             border: 1px solid rgba(0,0,0,0.1);
         }
 
+        .btn-full {
+            flex: none;
+            width: 100%;
+        }
+
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-sm);
@@ -350,6 +355,17 @@
         .modal-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-sm);
+        }
+
+        .centered-text {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-align: center;
         }
 
         @keyframes fadeIn {
@@ -447,6 +463,10 @@
                 font-size: 0.75rem;
                 padding: 0.5rem;
             }
+            
+            .centered-text {
+                font-size: 1.3rem;
+            }
         }
 
         @media (min-width: 769px) {
@@ -455,11 +475,11 @@
             }
         }
     </style>
-
+</head>
 <body>
     <div class="app-container">
         <header class="app-header">
-            <h1 class="app-title">Menu 31 Hari</h1>
+            <h1 class="app-title">Menu</h1>
             <p class="app-subtitle">September 2025</p>
         </header>
         <div class="content">
@@ -679,6 +699,19 @@
                     openEditModal(item);
                 });
             });
+
+            // Add Daftar Harga card
+            const daftarHargaCard = document.createElement('div');
+            daftarHargaCard.className = 'day-card';
+            daftarHargaCard.innerHTML = `
+                <div class="centered-text">Daftar<br>Harga</div>
+                <div class="action-buttons">
+                    <a href="https://pusatwifisolo.github.io/harga" class="btn btn-primary btn-full" target="_blank">
+                        <i class="fas fa-link"></i> Lihat Harga
+                    </a>
+                </div>
+            `;
+            calendarGrid.appendChild(daftarHargaCard);
         }
 
         function shareMenu(dayData) {
